@@ -33,4 +33,13 @@ issuesRouter.get("/:id", (req, res) => {
     res.json({"error": `No issue with id ${id} found`})
 })
 
+issuesRouter.post("/", (req, res) => {
+  const newIssue = {
+    title: req.body.title,
+    description: req.body.description
+  }
+  console.log(newIssue)
+  res.json(newIssue)
+})
+
 module.exports = issuesRouter

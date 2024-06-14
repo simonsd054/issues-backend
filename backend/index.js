@@ -5,6 +5,8 @@ const issuesRouter = require("./controllers/issues")
 
 const app = express()
 
+app.use(express.json())
+
 const corsOption = {
   origin: ["http://localhost:3000"],
   optionsSuccessStatus: 200,
