@@ -42,4 +42,14 @@ issuesRouter.post("/", (req, res) => {
   res.json(newIssue)
 })
 
+issuesRouter.put("/:id", (req, res) => {
+  const updatedIssue = {
+    id: req.params.id,
+    title: req.body.title,
+    description: req.body.description
+  }
+  console.log(updatedIssue)
+  res.json(updatedIssue)
+})
+
 module.exports = issuesRouter
