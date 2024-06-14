@@ -26,9 +26,9 @@ issuesRouter.get("/", (req, res) => {
 
 issuesRouter.get("/:id", (req, res) => {
   const id = req.params.id
-  const issueToBeReturned = issues.filter((issue) => issue.id == id)
-  if (issueToBeReturned.length > 0)
-    res.json(issueToBeReturned[0])
+  const issueToBeReturned = issues.find((issue) => issue.id == id)
+  if (issueToBeReturned)
+    res.json(issueToBeReturned)
   else
     res.json({"error": `No issue with id ${id} found`})
 })
@@ -50,6 +50,16 @@ issuesRouter.put("/:id", (req, res) => {
   }
   console.log(updatedIssue)
   res.json(updatedIssue)
+})
+
+issuesRouter.delete("/:id", (req, res) => {
+  const id = req.params.id
+  const issueToBeDeleted = issues.find((issue) => issue.id == id)
+  console.log(issueToBeDeleted)
+  if(issueToBeDeleted)
+    res.json(issueToBeDeleted)
+  else
+    res.json({"error": `No issue with id ${id} found`})
 })
 
 module.exports = issuesRouter
